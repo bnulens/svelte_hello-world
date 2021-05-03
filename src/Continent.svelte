@@ -15,8 +15,13 @@
 
 {#if continentName !== "unknown"}
   <li class="continent-item {continentName}">
-    <input id="collapse-continent" class="toggle" type="checkbox" />
-    <label for="collapse-continent" class="lbl-toggle">
+    <input
+      id="collapse-continent {continentName}"
+      class="toggle"
+      type="checkbox"
+      name={continentName}
+    />
+    <label for="collapse-continent {continentName}" class="lbl-toggle">
       <h2 class="collapse-title">{formatNames(continentName)}</h2>
     </label>
     <div class="continent-content">
@@ -44,23 +49,27 @@
 
 <style lang="scss">
   .continent-item {
+    position: relative;
     display: block;
     width: 100%;
     height: 100%;
     list-style: none;
-    border: 1px solid green;
 
     /* Collapse */
     .toggle[type="checkbox"] {
-      display: block;
+      display: none;
     }
 
     .toggle:checked + label {
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
     }
+    .toggle:checked + label > h2 {
+      color: #444;
+    }
 
     .toggle:checked + label::before {
+      color: #444;
       transform: rotate(90deg) translateX(-3px);
     }
 
@@ -74,23 +83,23 @@
 
       h2 {
         font-size: 40px;
+        font-weight: 400;
+        color: #aaa;
       }
     }
 
     .lbl-toggle::before {
       content: " ";
       display: inline-block;
-      height: 100%;
-      width: 100%;
-      border: 1px solid pink;
+      color: #aaa;
 
       border-top: 5px solid transparent;
       border-bottom: 5px solid transparent;
       border-left: 5px solid currentColor;
 
       vertical-align: middle;
-      margin-right: 0.7rem;
-      transform: translateY(-2px);
+      margin-right: 5px;
+      transform: translateY(-5px);
 
       transition: transform 0.2s ease-out;
     }
