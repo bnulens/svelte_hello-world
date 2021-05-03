@@ -54,6 +54,7 @@
 
   @media screen and (min-width: 1280px) {
     main {
+      width: 95%;
       max-width: 1280px;
     }
   }
